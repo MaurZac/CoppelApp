@@ -99,6 +99,7 @@
 		C5C357B6281CFFE300999E38 /* CoppelApp */ = {
 			isa = PBXGroup;
 			children = (
+				C5DE9A23281E3CD30091D331 /* Login */,
 				C5C357B7281CFFE300999E38 /* AppDelegate.swift */,
 				C5C357B9281CFFE300999E38 /* SceneDelegate.swift */,
 				C5C357BB281CFFE300999E38 /* ViewController.swift */,
@@ -125,6 +126,21 @@
 				C5C357DA281CFFE400999E38 /* CoppelAppUITestsLaunchTests.swift */,
 			);
 			path = CoppelAppUITests;
+			sourceTree = "<group>";
+		};
+		C5DE9A23281E3CD30091D331 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C5DE9A24281E3CDB0091D331 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C5DE9A24281E3CDB0091D331 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
