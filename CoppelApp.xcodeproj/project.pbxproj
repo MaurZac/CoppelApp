@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C52F63C0281E475000F11F55 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63B9281E475000F11F55 /* LoginPresenter.swift */; };
+		C52F63C1281E475000F11F55 /* LoginLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BA281E475000F11F55 /* LoginLocalDataManager.swift */; };
+		C52F63C2281E475000F11F55 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BB281E475000F11F55 /* LoginProtocols.swift */; };
+		C52F63C3281E475000F11F55 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BC281E475000F11F55 /* LoginInteractor.swift */; };
+		C52F63C4281E475000F11F55 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BD281E475000F11F55 /* LoginView.swift */; };
+		C52F63C5281E475000F11F55 /* LoginRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BE281E475000F11F55 /* LoginRemoteDataManager.swift */; };
+		C52F63C6281E475000F11F55 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F63BF281E475000F11F55 /* LoginWireFrame.swift */; };
 		C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B7281CFFE300999E38 /* AppDelegate.swift */; };
 		C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B9281CFFE300999E38 /* SceneDelegate.swift */; };
 		C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357BB281CFFE300999E38 /* ViewController.swift */; };
-		C5C357BF281CFFE300999E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C357BD281CFFE300999E38 /* Main.storyboard */; };
 		C5C357C1281CFFE400999E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5C357C0281CFFE400999E38 /* Assets.xcassets */; };
 		C5C357C4281CFFE400999E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C357C2281CFFE400999E38 /* LaunchScreen.storyboard */; };
 		C5C357CF281CFFE400999E38 /* CoppelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357CE281CFFE400999E38 /* CoppelAppTests.swift */; };
@@ -36,11 +42,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C52F63B9281E475000F11F55 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		C52F63BA281E475000F11F55 /* LoginLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLocalDataManager.swift; sourceTree = "<group>"; };
+		C52F63BB281E475000F11F55 /* LoginProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocols.swift; sourceTree = "<group>"; };
+		C52F63BC281E475000F11F55 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		C52F63BD281E475000F11F55 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C52F63BE281E475000F11F55 /* LoginRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRemoteDataManager.swift; sourceTree = "<group>"; };
+		C52F63BF281E475000F11F55 /* LoginWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		C5C357B4281CFFE300999E38 /* CoppelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoppelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C357B7281CFFE300999E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C357B9281CFFE300999E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C5C357BB281CFFE300999E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C5C357BE281CFFE300999E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5C357C0281CFFE400999E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5C357C3281CFFE400999E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5C357C5281CFFE400999E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,7 +115,6 @@
 				C5C357B7281CFFE300999E38 /* AppDelegate.swift */,
 				C5C357B9281CFFE300999E38 /* SceneDelegate.swift */,
 				C5C357BB281CFFE300999E38 /* ViewController.swift */,
-				C5C357BD281CFFE300999E38 /* Main.storyboard */,
 				C5C357C0281CFFE400999E38 /* Assets.xcassets */,
 				C5C357C2281CFFE400999E38 /* LaunchScreen.storyboard */,
 				C5C357C5281CFFE400999E38 /* Info.plist */,
@@ -131,16 +142,15 @@
 		C5DE9A23281E3CD30091D331 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C5DE9A24281E3CDB0091D331 /* View */,
+				C52F63B9281E475000F11F55 /* LoginPresenter.swift */,
+				C52F63BA281E475000F11F55 /* LoginLocalDataManager.swift */,
+				C52F63BB281E475000F11F55 /* LoginProtocols.swift */,
+				C52F63BC281E475000F11F55 /* LoginInteractor.swift */,
+				C52F63BD281E475000F11F55 /* LoginView.swift */,
+				C52F63BE281E475000F11F55 /* LoginRemoteDataManager.swift */,
+				C52F63BF281E475000F11F55 /* LoginWireFrame.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		C5DE9A24281E3CDB0091D331 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +259,6 @@
 			files = (
 				C5C357C4281CFFE400999E38 /* LaunchScreen.storyboard in Resources */,
 				C5C357C1281CFFE400999E38 /* Assets.xcassets in Resources */,
-				C5C357BF281CFFE300999E38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +283,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52F63C0281E475000F11F55 /* LoginPresenter.swift in Sources */,
 				C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */,
+				C52F63C3281E475000F11F55 /* LoginInteractor.swift in Sources */,
 				C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */,
+				C52F63C6281E475000F11F55 /* LoginWireFrame.swift in Sources */,
+				C52F63C2281E475000F11F55 /* LoginProtocols.swift in Sources */,
 				C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */,
+				C52F63C4281E475000F11F55 /* LoginView.swift in Sources */,
+				C52F63C1281E475000F11F55 /* LoginLocalDataManager.swift in Sources */,
+				C52F63C5281E475000F11F55 /* LoginRemoteDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,14 +329,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C5C357BD281CFFE300999E38 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5C357BE281CFFE300999E38 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C5C357C2281CFFE400999E38 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -460,7 +468,7 @@
 				INFOPLIST_FILE = CoppelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -488,7 +496,7 @@
 				INFOPLIST_FILE = CoppelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
