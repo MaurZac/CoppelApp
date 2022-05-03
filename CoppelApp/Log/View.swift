@@ -1,21 +1,24 @@
 //
-//  LoginView.swift
+//  View.swift
 //  CoppelApp
 //
-//  Created by Mauricio Zarate on 30/04/22.
-//  
+//  Created by Mauricio Zarate on 02/05/22.
 //
 
 import Foundation
 import UIKit
 
-class LoginView: UIViewController {
+protocol AnyView {
+    var presenter: AnyPresenter? {get set}
+    func update(with user: [LogEntity])
+    func update(with error: String)
     
-    
+}
 
-    // MARK: Properties
-    var presenter: LoginPresenterProtocol?
-    var loginV: UIView!
+class LogViewController: UIViewController, AnyView{
+    var presenter: AnyPresenter?
+    
+    
     
     private let bgImage: UIImageView = {
         let background = UIImageView()
@@ -100,12 +103,13 @@ class LoginView: UIViewController {
     }
     
     @objc private func goToLogin() {
+        presenter?.interactor?.loginUser(username: userTField.text ?? "", password: passTField.text ?? "")
         if userTField.text == "" || passTField.text == "" {
             lblError.isHidden = false
-            lblError.text = "Los campos no pueden ir vacios"
         }else{
             lblError.isHidden = true
         }
+        
     }
     
    
@@ -122,28 +126,34 @@ class LoginView: UIViewController {
         bgImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         bgImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         bgImage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        imageIcon.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
         imageIcon.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         stackV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 270).isActive = true
         stackV.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
         stackV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50).isActive = true
         stackV.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        //stackV.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120).isActive = true
         imageIcon.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
        imageIcon.centerXAnchor.constraint(equalTo: stackV.centerXAnchor, constant: 0).isActive = true
+//        imageIcon.bottomAnchor.constraint(equalTo: stackV.bottomAnchor, constant: -450).isActive = true
         imageIcon.leftAnchor.constraint(equalTo: stackV.leftAnchor, constant: 50).isActive = true
         imageIcon.rightAnchor.constraint(equalTo: stackV.rightAnchor, constant: -50).isActive = true
         imageIcon.bottomAnchor.constraint(equalTo: stackV.topAnchor, constant: -30).isActive = true
         
         lblError.topAnchor.constraint(equalTo: stackV.bottomAnchor, constant: 10).isActive = true
         lblError.centerXAnchor.constraint(equalTo: stackV.centerXAnchor, constant: 0).isActive = true
+        
     }
 
-   
-}
-
-extension LoginView: LoginViewProtocol {
-    // TODO: implement view output methods
+    
+    func update(with user: [LogEntity]) {
+        print("updateusermodel")
+    }
+    
+    func update(with error: String) {
+        print("error")
+    }
+    
     
 }
-
-

@@ -12,8 +12,8 @@ import UIKit
 class LoginWireFrame: LoginWireFrameProtocol {
 
     class func createLoginModule() -> UIViewController {
-        let navController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView")
-        if let view = navController.children.first as? LoginView {
+        let view = LoginView()
+        if let view = view as? LoginView {
             let presenter: LoginPresenterProtocol & LoginInteractorOutputProtocol = LoginPresenter()
             let interactor: LoginInteractorInputProtocol & LoginRemoteDataManagerOutputProtocol = LoginInteractor()
             let localDataManager: LoginLocalDataManagerInputProtocol = LoginLocalDataManager()
@@ -29,13 +29,13 @@ class LoginWireFrame: LoginWireFrameProtocol {
             interactor.remoteDatamanager = remoteDataManager
             remoteDataManager.remoteRequestHandler = interactor
             
-            return navController
+            return view
         }
         return UIViewController()
     }
     
-    static var mainStoryboard: UIStoryboard {
-        return UIStoryboard(name: "LoginView", bundle: Bundle.main)
+    static var mainStoryboard: UIViewController {
+        return UIViewController(nibName: "LoginView", bundle: Bundle.main)
     }
     
 }

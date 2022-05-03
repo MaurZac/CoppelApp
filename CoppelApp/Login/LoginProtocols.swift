@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-protocol LoginViewProtocol: class {
+protocol LoginViewProtocol: AnyObject {
     // PRESENTER -> VIEW
     var presenter: LoginPresenterProtocol? { get set }
 }
 
-protocol LoginWireFrameProtocol: class {
+protocol LoginWireFrameProtocol: AnyObject {
     // PRESENTER -> WIREFRAME
     static func createLoginModule() -> UIViewController
 }
 
-protocol LoginPresenterProtocol: class {
+protocol LoginPresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var view: LoginViewProtocol? { get set }
     var interactor: LoginInteractorInputProtocol? { get set }
@@ -28,18 +28,18 @@ protocol LoginPresenterProtocol: class {
     func viewDidLoad()
 }
 
-protocol LoginInteractorOutputProtocol: class {
+protocol LoginInteractorOutputProtocol: AnyObject {
 // INTERACTOR -> PRESENTER
 }
 
-protocol LoginInteractorInputProtocol: class {
+protocol LoginInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: LoginInteractorOutputProtocol? { get set }
     var localDatamanager: LoginLocalDataManagerInputProtocol? { get set }
     var remoteDatamanager: LoginRemoteDataManagerInputProtocol? { get set }
 }
 
-protocol LoginDataManagerInputProtocol: class {
+protocol LoginDataManagerInputProtocol: AnyObject {
     // INTERACTOR -> DATAMANAGER
 }
 

@@ -19,7 +19,7 @@ class LoginPresenter  {
 extension LoginPresenter: LoginPresenterProtocol {
     // TODO: implement presenter methods
     func viewDidLoad() {
-        
+        print("presenterEntry")
     }
 }
 
