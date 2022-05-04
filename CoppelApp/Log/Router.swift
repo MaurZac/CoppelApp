@@ -16,7 +16,7 @@ protocol AnyRouter {
 
 class LogRouter: AnyRouter {
     var entry: EntryPoint?
-    
+    var window: UIWindow?
 
     static func start() -> AnyRouter {
         let router = LogRouter()
@@ -38,4 +38,6 @@ class LogRouter: AnyRouter {
         
         return router
     }
+    
+     
 }

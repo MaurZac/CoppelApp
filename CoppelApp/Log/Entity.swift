@@ -9,5 +9,4 @@ import Foundation
 
 struct LogEntity: Codable{
     let request_token: String
-    let status_message: String
 }

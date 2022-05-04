@@ -19,11 +19,11 @@
 		C52F640F2820AF9600F11F55 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F640E2820AF9600F11F55 /* Presenter.swift */; };
 		C52F64112820AFA200F11F55 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64102820AFA200F11F55 /* Entity.swift */; };
 		C52F64132820AFAE00F11F55 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64122820AFAE00F11F55 /* Router.swift */; };
-		C52F64162821753900F11F55 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64152821753900F11F55 /* View.swift */; };
-		C52F64182821754500F11F55 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64172821754500F11F55 /* Interactor.swift */; };
-		C52F641A2821755100F11F55 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64192821755100F11F55 /* Presenter.swift */; };
-		C52F641C2821755C00F11F55 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F641B2821755C00F11F55 /* Entity.swift */; };
-		C52F641E2821756600F11F55 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F641D2821756600F11F55 /* Router.swift */; };
+		C52F642128217AFF00F11F55 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642028217AFF00F11F55 /* HomeView.swift */; };
+		C52F642328217B0A00F11F55 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642228217B0A00F11F55 /* HomeInteractor.swift */; };
+		C52F642528217B1300F11F55 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642428217B1300F11F55 /* HomePresenter.swift */; };
+		C52F642728217B1C00F11F55 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642628217B1C00F11F55 /* HomeEntity.swift */; };
+		C52F642928217B2500F11F55 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642828217B2500F11F55 /* HomeRouter.swift */; };
 		C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B7281CFFE300999E38 /* AppDelegate.swift */; };
 		C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B9281CFFE300999E38 /* SceneDelegate.swift */; };
 		C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357BB281CFFE300999E38 /* ViewController.swift */; };
@@ -64,11 +64,11 @@
 		C52F640E2820AF9600F11F55 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		C52F64102820AFA200F11F55 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C52F64122820AFAE00F11F55 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		C52F64152821753900F11F55 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		C52F64172821754500F11F55 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		C52F64192821755100F11F55 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		C52F641B2821755C00F11F55 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		C52F641D2821756600F11F55 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C52F642028217AFF00F11F55 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C52F642228217B0A00F11F55 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		C52F642428217B1300F11F55 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		C52F642628217B1C00F11F55 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
+		C52F642828217B2500F11F55 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		C5C357B4281CFFE300999E38 /* CoppelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoppelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C357B7281CFFE300999E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C357B9281CFFE300999E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,14 +120,14 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
-		C52F64142821751C00F11F55 /* Home */ = {
+		C52F641F28217AEB00F11F55 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C52F64152821753900F11F55 /* View.swift */,
-				C52F64172821754500F11F55 /* Interactor.swift */,
-				C52F64192821755100F11F55 /* Presenter.swift */,
-				C52F641B2821755C00F11F55 /* Entity.swift */,
-				C52F641D2821756600F11F55 /* Router.swift */,
+				C52F642028217AFF00F11F55 /* HomeView.swift */,
+				C52F642228217B0A00F11F55 /* HomeInteractor.swift */,
+				C52F642428217B1300F11F55 /* HomePresenter.swift */,
+				C52F642628217B1C00F11F55 /* HomeEntity.swift */,
+				C52F642828217B2500F11F55 /* HomeRouter.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				C52F64092820AF5100F11F55 /* Log */,
-				C52F64142821751C00F11F55 /* Home */,
+				C52F641F28217AEB00F11F55 /* Home */,
 				C5DE9A23281E3CD30091D331 /* Login */,
 				C5C357B7281CFFE300999E38 /* AppDelegate.swift */,
 				C5C357B9281CFFE300999E38 /* SceneDelegate.swift */,
@@ -329,8 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C52F641A2821755100F11F55 /* Presenter.swift in Sources */,
-				C52F64162821753900F11F55 /* View.swift in Sources */,
+				C52F642528217B1300F11F55 /* HomePresenter.swift in Sources */,
+				C52F642128217AFF00F11F55 /* HomeView.swift in Sources */,
 				C52F63C0281E475000F11F55 /* LoginPresenter.swift in Sources */,
 				C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */,
 				C52F64112820AFA200F11F55 /* Entity.swift in Sources */,
@@ -341,12 +341,12 @@
 				C52F64132820AFAE00F11F55 /* Router.swift in Sources */,
 				C52F640D2820AF8B00F11F55 /* Interactor.swift in Sources */,
 				C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */,
-				C52F641E2821756600F11F55 /* Router.swift in Sources */,
+				C52F642928217B2500F11F55 /* HomeRouter.swift in Sources */,
 				C52F63C4281E475000F11F55 /* LoginView.swift in Sources */,
-				C52F64182821754500F11F55 /* Interactor.swift in Sources */,
+				C52F642328217B0A00F11F55 /* HomeInteractor.swift in Sources */,
 				C52F63C1281E475000F11F55 /* LoginLocalDataManager.swift in Sources */,
 				C52F640F2820AF9600F11F55 /* Presenter.swift in Sources */,
-				C52F641C2821755C00F11F55 /* Entity.swift in Sources */,
+				C52F642728217B1C00F11F55 /* HomeEntity.swift in Sources */,
 				C52F640B2820AF7F00F11F55 /* View.swift in Sources */,
 				C52F63C5281E475000F11F55 /* LoginRemoteDataManager.swift in Sources */,
 			);

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum FetchError: Error {
     case failed
@@ -20,7 +21,7 @@ protocol AnyPresenter {
 }
 
 class LogPresenter: AnyPresenter {
-   
+    
     var user: String = ""
     var pass: String = ""
     var router: AnyRouter?
@@ -42,6 +43,5 @@ class LogPresenter: AnyPresenter {
             view?.update(with: "Something went wrong")
         }
     }
-    
     
 }
