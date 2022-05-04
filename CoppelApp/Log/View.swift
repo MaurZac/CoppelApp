@@ -107,7 +107,6 @@ class LogViewController: UIViewController, AnyView{
     
     @objc private func goToLogin() {
      
-        
         if userTField.text == "" || passTField.text == "" {
             lblError.isHidden = false
             lblError.text = "Los campos no pueden ir vacios"
@@ -115,8 +114,7 @@ class LogViewController: UIViewController, AnyView{
             DispatchQueue.main.async {
                 self.presenter?.interactor?.loginUser(username: self.userTField.text ?? "", password: self.passTField.text ?? "")
             }
-      
-            lblError.isHidden = true
+           
         }
     }
     
@@ -160,16 +158,19 @@ class LogViewController: UIViewController, AnyView{
     }
     
     func update(with error: String) {
-        print(error)
-        DispatchQueue.main.async {
-            self.lblError.text = error
+        print("aquimuestraelerror: \(error)")
+        DispatchQueue.main.async { [self] in
+            self.lblError.text = "\(error)"
+            lblError.isHidden = false
         }
     }
-    
+        
     func newView(onViewC: UIViewController) {
         DispatchQueue.main.async {
             let navController = UINavigationController(rootViewController: onViewC)
             navController.modalPresentationStyle = .fullScreen
+            navController.navigationBar.backgroundColor = .darkGray
+        
             self.present(navController, animated: true, completion: nil)
         }
 

@@ -15,6 +15,10 @@ protocol HomeAnyView {
 }
 
 class HomeViewController: UIViewController, HomeAnyView{
+    
+    
+    
+    
     func update(with user: [LogEntity]) {
         print("update")
     }
@@ -26,8 +30,34 @@ class HomeViewController: UIViewController, HomeAnyView{
     
     var presenter: HomeAnyPresenter?
     
+    let segmentMenu: UISegmentedControl = {
+        let segmenu = UISegmentedControl()
+        
+        return segmenu
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        navigationController?.navigationBar.tintColor = .white
+        view.backgroundColor = .systemGray6
+        title = "TV Shows"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
+        button.addTarget(self, action:#selector(callMethod), for: .touchDown)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItems = [barButton]
+        
     }
+    
+    @objc func callMethod(){
+        print("lolismo")
+    }
+    
+    
+    
 }

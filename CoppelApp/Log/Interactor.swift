@@ -61,13 +61,17 @@ class LogInteractor: AnyInteractor {
             guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
                 print("statusCode should be 2xx, but is \(response.statusCode)")
                 print("response = \(response)")
+                self.presenter?.view?.update(with: "\(response.statusCode) incorrect Data")
                 return
             }
 
             let responseString = String(data: data, encoding: .utf8)
-            self.presenter?.view?.newView(onViewC: HomeViewController())
-
-            print("responseString = \(responseString)")
+            DispatchQueue.main.async {
+                self.presenter?.view?.newView(onViewC: HomeViewController())
+            }
+            
+            
+            print("responseString = \(String(describing: responseString))")
         }
 
         task.resume()
