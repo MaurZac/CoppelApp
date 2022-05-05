@@ -24,6 +24,7 @@
 		C52F642528217B1300F11F55 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642428217B1300F11F55 /* HomePresenter.swift */; };
 		C52F642728217B1C00F11F55 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642628217B1C00F11F55 /* HomeEntity.swift */; };
 		C52F642928217B2500F11F55 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642828217B2500F11F55 /* HomeRouter.swift */; };
+		C52F642C2823946800F11F55 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F642B2823946800F11F55 /* MovieCollectionViewCell.swift */; };
 		C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B7281CFFE300999E38 /* AppDelegate.swift */; };
 		C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B9281CFFE300999E38 /* SceneDelegate.swift */; };
 		C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357BB281CFFE300999E38 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		C52F642428217B1300F11F55 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		C52F642628217B1C00F11F55 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		C52F642828217B2500F11F55 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		C52F642B2823946800F11F55 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5C357B4281CFFE300999E38 /* CoppelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoppelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C357B7281CFFE300999E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C357B9281CFFE300999E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		C52F641F28217AEB00F11F55 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C52F642A2823941600F11F55 /* Cell */,
 				C52F642028217AFF00F11F55 /* HomeView.swift */,
 				C52F642228217B0A00F11F55 /* HomeInteractor.swift */,
 				C52F642428217B1300F11F55 /* HomePresenter.swift */,
@@ -130,6 +133,14 @@
 				C52F642828217B2500F11F55 /* HomeRouter.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C52F642A2823941600F11F55 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C52F642B2823946800F11F55 /* MovieCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C5C357AB281CFFE300999E38 = {
@@ -347,6 +358,7 @@
 				C52F63C1281E475000F11F55 /* LoginLocalDataManager.swift in Sources */,
 				C52F640F2820AF9600F11F55 /* Presenter.swift in Sources */,
 				C52F642728217B1C00F11F55 /* HomeEntity.swift in Sources */,
+				C52F642C2823946800F11F55 /* MovieCollectionViewCell.swift in Sources */,
 				C52F640B2820AF7F00F11F55 /* View.swift in Sources */,
 				C52F63C5281E475000F11F55 /* LoginRemoteDataManager.swift in Sources */,
 			);

@@ -20,14 +20,17 @@ protocol HomeAnyPresenter {
 }
 
 class HomePresenter: HomeAnyPresenter {
+    
+    func viewDidLoad() {
+        print("presenterEntry")
+        interactor?.getMovies()
+    }
+    
     func interactorDidFetchUser(with result: Result<[LogEntity], Error>) {
         print("result")
     }
     
-
     var router: HomeAnyRouter?
-    
     var interactor: HomeAnyInteractor?
-    
     var view: HomeAnyView?
 }

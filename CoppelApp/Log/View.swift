@@ -170,7 +170,6 @@ class LogViewController: UIViewController, AnyView{
             let navController = UINavigationController(rootViewController: onViewC)
             navController.modalPresentationStyle = .fullScreen
             navController.navigationBar.backgroundColor = .darkGray
-        
             self.present(navController, animated: true, completion: nil)
         }
 

@@ -19,7 +19,7 @@ class LogInteractor: AnyInteractor {
     public var errorlbl: String = ""
     var tokenOb: String = ""
     var customNavigation:UINavigationController?
-
+    var window: UIWindow?
     
     func getToken() {
         guard let url = URL(string: "https://api.themoviedb.org/3/authentication/token/new?api_key=34c5d1ffcfea821c6c7269f28caafa11") else { return }
@@ -48,7 +48,6 @@ class LogInteractor: AnyInteractor {
             "password": password,
             "request_token": tokenOb
         ]
-        print(parameters)
         request.httpBody = parameters.percentEncoded()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data,
@@ -65,19 +64,22 @@ class LogInteractor: AnyInteractor {
                 return
             }
 
-            let responseString = String(data: data, encoding: .utf8)
+            //let responseString = String(data: data, encoding: .utf8)
             DispatchQueue.main.async {
+                    let userRouter = HomeRouter.start()
+                    let initialVC = userRouter.entry
+                    let window = UIWindow()
+                    window.rootViewController = initialVC
+                    self.window = window
+                    window.makeKeyAndVisible()
+                
+                
                 self.presenter?.view?.newView(onViewC: HomeViewController())
             }
-            
-            
-            print("responseString = \(String(describing: responseString))")
         }
 
         task.resume()
         }
-    
-    
 }
 extension Dictionary {
     func percentEncoded() -> Data? {

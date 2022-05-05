@@ -35,7 +35,6 @@ class LogRouter: AnyRouter {
         presenter.interactor = interactor
         
         router.entry = view as? EntryPoint
-        
         return router
     }
     
