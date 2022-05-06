@@ -17,10 +17,7 @@ protocol AnyView {
 }
 
 class LogViewController: UIViewController, AnyView{
-    
-   
-    
-   
+
     var presenter: AnyPresenter?
     
     private let bgImage: UIImageView = {

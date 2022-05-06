@@ -17,11 +17,10 @@ protocol HomeAnyView {
 
 
 class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    
-    
+ 
     var presenter: HomeAnyPresenter?
-
+    var window: UIWindow?
+    
     var infoRes: [Welcome] = []
     let segmentMenu: UISegmentedControl = {
         let segmenu = UISegmentedControl(items: ["Popular", "Top Rated", "On Tv", "Airing Today"])
@@ -114,8 +113,19 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         print("omgError")
     }
     
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = inputFormatter.date(from: dateString) {
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = format
+        return outputFormatter.string(from: date)
+        }
+        return nil
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 300)
+        return CGSize(width: 160, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -128,6 +138,9 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)")
         cell.myImg.clipsToBounds = true
         cell.myImg.layer.cornerRadius = 30
+        cell.myLblDes.text = infoRes[0].results[indexPath.row].overview
+        let stringB = formattedDateFromString( dateString: infoRes[0].results[indexPath.row].releaseDate, withFormat: "MMM dd, yyyy")
+        cell.myLblDate.text = stringB
         return cell
     }
    
@@ -136,7 +149,34 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+        
+        DispatchQueue.main.async { [self] in
+            let modalV = ModalViewController()
+           // modalV.myLbl.text = infoRes[0].results[indexPath.row].originalTitle
+                modalV.texto1 = infoRes[0].results[indexPath.row].originalTitle
+                let userRouter = ModalRouter.start()
+                let initialVC = userRouter.entry
+                initialVC?.presenter?.view?.update(with: infoRes[0].results[indexPath.row].originalTitle)
+                let window = UIWindow()
+                window.rootViewController = initialVC
+                self.window = window
+                window.makeKeyAndVisible()
+            newView(onViewC: ModalViewController())
+        }
+        
+        
         print(infoRes[0].results[indexPath.row].originalTitle)
+    }
+    
+    func newView(onViewC: UIViewController) {
+        DispatchQueue.main.async {
+            let navController = UINavigationController(rootViewController: onViewC)
+            navController.modalPresentationStyle = .popover
+            navController.navigationBar.backgroundColor = .clear
+            self.present(navController, animated: true, completion: nil)
+        }
+
     }
 }
 
@@ -151,7 +191,6 @@ extension HomeViewController{
         button.showsMenuAsPrimaryAction = true
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItems = [barButton]
-        
     }
     
     func menuItem() -> UIMenu {
@@ -179,7 +218,8 @@ extension HomeViewController{
         collectionview.topAnchor.constraint(equalTo: segmentMenu.bottomAnchor, constant: 20).isActive = true
         collectionview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         collectionview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        collectionview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10).isActive = true
+        collectionview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        
 
     }
    
