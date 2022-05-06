@@ -112,9 +112,8 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       
-
-        return CGSize(width: 160, height: 180.0)
+    
+        return CGSize(width: 160, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -123,21 +122,16 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath as IndexPath) as! MovieCollectionViewCell
-        cell.
+        cell.myLbl.text = infoRes[0].results[indexPath.row].originalTitle
+        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)")
+        cell.myImg.clipsToBounds = true
+        cell.myImg.layer.cornerRadius = 30
         return cell
     }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         5
     }
-    
-    
-    
-    
-   
-
-    
- 
 }
 
 extension HomeViewController{
@@ -170,4 +164,25 @@ extension HomeViewController{
 
     }
    
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
 }

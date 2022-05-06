@@ -11,20 +11,21 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MovieCollectionViewCell"
     
-    private let myImg: UIImageView = {
+     let myImg: UIImageView = {
         let imageV = UIImageView()
-            imageV.backgroundColor = UIColor.white
-            imageV.image = UIImage(named: "mrobot")
-            imageV.contentMode = .scaleAspectFill
-            imageV.translatesAutoresizingMaskIntoConstraints = false
+         imageV.backgroundColor = UIColor.systemGray2
+         imageV.layer.cornerRadius = 25
+         imageV.contentMode = .scaleAspectFill
+         imageV.translatesAutoresizingMaskIntoConstraints = false
      return imageV
     }()
     
-    private let myLbl: UILabel = {
+     let myLbl: UILabel = {
         let label = UILabel()
         label.text = "title"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.green
+         label.backgroundColor = .blue
         label.textAlignment = .left
         return label
     }()
@@ -35,11 +36,19 @@ class MovieCollectionViewCell: UICollectionViewCell {
         }
 
         func addViews(){
+            contentView.backgroundColor = .red
             addSubview(myImg)
             addSubview(myLbl)
             
-            myImg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-            myLbl.topAnchor.constraint(equalTo: myImg.bottomAnchor, constant: 1).isActive = true
+            
+            myImg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+            myImg.widthAnchor.constraint(equalToConstant:  163).isActive = true
+            myImg.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -30).isActive = true
+            myImg.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+
+            
+            myLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+            myLbl.widthAnchor.constraint(equalToConstant:  162).isActive = true
         }
 
     
