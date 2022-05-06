@@ -154,7 +154,11 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         DispatchQueue.main.async { [self] in
             let destinationVC = ModalViewController()
             destinationVC.texto1 = infoRes[0].results[indexPath.row].originalTitle
+            destinationVC.texto2 = infoRes[0].results[indexPath.row].overview
+            destinationVC.texto3 = infoRes[0].results[indexPath.row].voteAverage
             destinationVC.imgPath1 = "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)"
+            let stringB = formattedDateFromString( dateString: infoRes[0].results[indexPath.row].releaseDate, withFormat: "MMM dd, yyyy")
+            destinationVC.texto4 = stringB ?? ""
             present(destinationVC, animated: true, completion: nil)
             
                 let userRouter = ModalRouter.start()
@@ -166,9 +170,6 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
                 window.makeKeyAndVisible()
             
         }
-        
-//        newView(onViewC: ModalViewController())
-//        print(infoRes[0].results[indexPath.row].originalTitle)
     }
     
     func newView(onViewC: UIViewController) {

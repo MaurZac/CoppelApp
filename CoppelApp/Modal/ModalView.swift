@@ -18,8 +18,10 @@ protocol ModalAnyView {
 
 class ModalViewController: UIViewController, ModalAnyView {
     var presenter: ModalAnyPresenter?
-    var texto1: String = ""
+    var texto1 = "", texto2 = "", texto4 = ""
+    var texto3: Double = 0.0
     var imgPath1: String = ""
+    
     func update(with resul: [Welcome]) {
         print("lol")
     }
@@ -67,10 +69,46 @@ class ModalViewController: UIViewController, ModalAnyView {
     let myLbl: UILabel = {
        let label = UILabel()
        label.text = "texto1"
-       label.font = UIFont.systemFont(ofSize: 16)
+       label.font = UIFont.systemFont(ofSize: 14)
        label.textColor = UIColor.green
-       label.backgroundColor = .black
        label.numberOfLines = 2
+       label.lineBreakMode = .byWordWrapping
+       label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+       return label
+   }()
+    
+    let rate: UILabel = {
+       let label = UILabel()
+       label.text = "texto2"
+       label.font = UIFont.systemFont(ofSize: 12)
+       label.textColor = UIColor.green
+       label.numberOfLines = 1
+       label.lineBreakMode = .byWordWrapping
+       label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
+       return label
+   }()
+    
+    let date: UILabel = {
+       let label = UILabel()
+       label.text = "texto2"
+       label.font = UIFont.systemFont(ofSize: 12)
+       label.textColor = UIColor.green
+       label.numberOfLines = 1
+       label.lineBreakMode = .byWordWrapping
+       label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+       return label
+   }()
+    
+    let myDescri: UILabel = {
+       let label = UILabel()
+       label.text = "texto2"
+       label.font = UIFont.systemFont(ofSize: 10)
+       label.textColor = UIColor.white
+       label.backgroundColor = .black
+       label.numberOfLines = 10
        label.lineBreakMode = .byWordWrapping
        label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -84,9 +122,8 @@ class ModalViewController: UIViewController, ModalAnyView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        print("aquiva\(texto1)")
-        
         setupViewContraints()
+        print(texto2)
     }
     
     func setupViewContraints() {
@@ -95,6 +132,10 @@ class ModalViewController: UIViewController, ModalAnyView {
         containerView.addSubview(closeBtn)
         containerView.addSubview(myImg)
         containerView.addSubview(myLbl)
+        containerView.addSubview(rate)
+        containerView.addSubview(date)
+        containerView.addSubview(myDescri)
+        
         
         closeBtn.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
         closeBtn.widthAnchor.constraint(equalToConstant: 45).isActive = true
@@ -113,11 +154,32 @@ class ModalViewController: UIViewController, ModalAnyView {
         myLbl.centerXAnchor.constraint(equalTo: myImg.centerXAnchor, constant: 0).isActive = true
         myLbl.text = texto1
         
+        rate.topAnchor.constraint(equalTo: myLbl.bottomAnchor, constant: 5).isActive = true
+        rate.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        rate.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        rate.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -40).isActive = true
+        //rate.centerXAnchor.constraint(equalTo: myImg.centerXAnchor, constant: 0).isActive = true
+        rate.text = "⭐️ \(texto3)"
+        
+        date.topAnchor.constraint(equalTo: myLbl.bottomAnchor, constant: 5).isActive = true
+        date.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        date.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        date.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 40).isActive = true
+       // date.centerXAnchor.constraint(equalTo: myImg.centerXAnchor, constant: 0).isActive = true
+        date.text = "📅 \(texto4)"
+        
+        
+        myDescri.topAnchor.constraint(equalTo: rate.bottomAnchor, constant: 40).isActive = true
+        myDescri.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        myDescri.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        myDescri.centerXAnchor.constraint(equalTo: myImg.centerXAnchor, constant: 0).isActive = true
+        myDescri.text = texto2
+        
         containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
 
         containerView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 450).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 500).isActive = true
    
     }
 
