@@ -23,10 +23,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
      let myLbl: UILabel = {
         let label = UILabel()
         label.text = "title"
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = UIColor.green
          label.backgroundColor = .blue
-        label.textAlignment = .left
+        label.textAlignment = .center
         return label
     }()
     
@@ -41,14 +41,15 @@ class MovieCollectionViewCell: UICollectionViewCell {
             addSubview(myLbl)
             
             
-            myImg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+            myImg.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
             myImg.widthAnchor.constraint(equalToConstant:  163).isActive = true
             myImg.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -30).isActive = true
             myImg.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
 
-            
-            myLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-            myLbl.widthAnchor.constraint(equalToConstant:  162).isActive = true
+            myLbl.topAnchor.constraint(equalTo: myImg.topAnchor, constant: 50).isActive = true
+            myLbl.widthAnchor.constraint(equalToConstant:  163).isActive = true
+            myLbl.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -30).isActive = true
+            myLbl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
         }
 
     

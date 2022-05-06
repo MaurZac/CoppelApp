@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 
+
 protocol HomeAnyView {
     var presenter: HomeAnyPresenter? {get set}
     func update(with resul: [Welcome])
     func update(with error: String)
 }
 
+
 class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
     
     var presenter: HomeAnyPresenter?
 
@@ -64,7 +68,6 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         collectionview.dataSource = self
         getMovies()
     }
-    
    
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
@@ -112,7 +115,6 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
         return CGSize(width: 160, height: 300)
     }
     
@@ -132,19 +134,36 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         5
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(infoRes[0].results[indexPath.row].originalTitle)
+    }
 }
 
 extension HomeViewController{
+    
     func btnNavBar(){
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        button.addTarget(self, action:#selector(callMethod), for: .touchDown)
+        //button.addTarget(self, action:#selector(menuItem), for: .touchDown)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.menu = menuItem()
+        button.showsMenuAsPrimaryAction = true
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItems = [barButton]
+        
     }
-    @objc func callMethod(){
-        print("lolismo")
+    
+    func menuItem() -> UIMenu {
+        let addMenuItems = UIMenu(title: "What do you want to do?", options:  .displayInline, children:  [
+            UIAction(title: "View Profile" , image: UIImage(systemName: "")) {_ in
+                print("Copy")
+            },
+            UIAction(title: "Log out", image: UIImage(systemName: "")) {_ in
+                print("Copy")
+            }
+        ])
+        return addMenuItems
     }
     
     
