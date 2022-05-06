@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     var presenter: HomeAnyPresenter?
     var window: UIWindow?
     
+    
     var infoRes: [Welcome] = []
     let segmentMenu: UISegmentedControl = {
         let segmenu = UISegmentedControl(items: ["Popular", "Top Rated", "On Tv", "Airing Today"])
@@ -149,12 +150,13 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
         
         DispatchQueue.main.async { [self] in
-            let modalV = ModalViewController()
-           // modalV.myLbl.text = infoRes[0].results[indexPath.row].originalTitle
-                modalV.texto1 = infoRes[0].results[indexPath.row].originalTitle
+            let destinationVC = ModalViewController()
+            destinationVC.texto1 = infoRes[0].results[indexPath.row].originalTitle
+            destinationVC.imgPath1 = "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)"
+            present(destinationVC, animated: true, completion: nil)
+            
                 let userRouter = ModalRouter.start()
                 let initialVC = userRouter.entry
                 initialVC?.presenter?.view?.update(with: infoRes[0].results[indexPath.row].originalTitle)
@@ -162,11 +164,11 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
                 window.rootViewController = initialVC
                 self.window = window
                 window.makeKeyAndVisible()
-            newView(onViewC: ModalViewController())
+            
         }
         
-        
-        print(infoRes[0].results[indexPath.row].originalTitle)
+//        newView(onViewC: ModalViewController())
+//        print(infoRes[0].results[indexPath.row].originalTitle)
     }
     
     func newView(onViewC: UIViewController) {

@@ -19,7 +19,7 @@ protocol ModalAnyView {
 class ModalViewController: UIViewController, ModalAnyView {
     var presenter: ModalAnyPresenter?
     var texto1: String = ""
-    
+    var imgPath1: String = ""
     func update(with resul: [Welcome]) {
         print("lol")
     }
@@ -66,11 +66,11 @@ class ModalViewController: UIViewController, ModalAnyView {
     
     let myLbl: UILabel = {
        let label = UILabel()
-       label.text = "title"
+       label.text = "texto1"
        label.font = UIFont.systemFont(ofSize: 16)
        label.textColor = UIColor.green
        label.backgroundColor = .black
-       label.numberOfLines = 1
+       label.numberOfLines = 2
        label.lineBreakMode = .byWordWrapping
        label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -82,10 +82,11 @@ class ModalViewController: UIViewController, ModalAnyView {
     }
     
     override func viewDidLoad() {
-        //super.viewDidLoad()
+        super.viewDidLoad()
         view.backgroundColor = .clear
-        print("aquiva \(texto1)")
-        setupViewContraints() 
+        print("aquiva\(texto1)")
+        
+        setupViewContraints()
     }
     
     func setupViewContraints() {
@@ -104,11 +105,13 @@ class ModalViewController: UIViewController, ModalAnyView {
         myImg.widthAnchor.constraint(equalToConstant: 160).isActive = true
         myImg.heightAnchor.constraint(equalToConstant: 220).isActive = true
         myImg.centerXAnchor.constraint(equalTo: containerView.centerXAnchor, constant: 0).isActive = true
+        myImg.downloaded(from: imgPath1)
         
         myLbl.topAnchor.constraint(equalTo: myImg.bottomAnchor, constant: 5).isActive = true
         myLbl.widthAnchor.constraint(equalToConstant: 160).isActive = true
-        myLbl.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        myLbl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         myLbl.centerXAnchor.constraint(equalTo: myImg.centerXAnchor, constant: 0).isActive = true
+        myLbl.text = texto1
         
         containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -119,3 +122,4 @@ class ModalViewController: UIViewController, ModalAnyView {
     }
 
 }
+
