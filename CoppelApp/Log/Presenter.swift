@@ -30,10 +30,6 @@ class LogPresenter: AnyPresenter {
     
     var view: AnyView?
     
-//    func viewDidLoad() {
-//        interactor?.getUser()
-//        print("presenterEntry")
-//    }
     
     func interactorDidFetchUser(with result: Result<[LogEntity], Error>) {
         switch result {

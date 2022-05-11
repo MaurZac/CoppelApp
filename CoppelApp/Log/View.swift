@@ -17,10 +17,7 @@ protocol AnyView {
 }
 
 class LogViewController: UIViewController, AnyView{
-    
-   
-    
-   
+
     var presenter: AnyPresenter?
     
     private let bgImage: UIImageView = {
@@ -43,7 +40,8 @@ class LogViewController: UIViewController, AnyView{
         tf.borderStyle = .none
         tf.layer.cornerRadius = 5
         tf.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.2)
-        tf.textColor = .black
+        tf.textColor = .green
+        tf.textAlignment = .center
         tf.font = UIFont.systemFont(ofSize: 17)
         tf.autocorrectionType = .no
         var placeholder = NSMutableAttributedString()
@@ -57,7 +55,8 @@ class LogViewController: UIViewController, AnyView{
         tf.borderStyle = .none
         tf.layer.cornerRadius = 5
         tf.backgroundColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.2)
-        tf.textColor = .black
+        tf.textColor = .green
+        tf.textAlignment = .center
         tf.isSecureTextEntry = true
         tf.font = UIFont.systemFont(ofSize: 17)
         tf.autocorrectionType = .no
