@@ -26,11 +26,8 @@ class HomeRouter: HomeAnyRouter {
         var view: HomeAnyView = HomeViewController()
         var presenter: HomeAnyPresenter = HomePresenter()
         var interactor: HomeAnyInteractor = HomeInteractor()
-        
         view.presenter = presenter
-        
         interactor.presenter = presenter
-        
         presenter.router = router
         presenter.view = view
         presenter.interactor = interactor

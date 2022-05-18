@@ -28,6 +28,7 @@ class LogInteractor: AnyInteractor {
 
                 if let token = try? JSONDecoder().decode(LogEntity.self, from: data) {
                     self.tokenOb = token.request_token
+                    print(token)
                 } else {
                     print("Invalid Response")
                 }
@@ -64,7 +65,6 @@ class LogInteractor: AnyInteractor {
                 return
             }
 
-            //let responseString = String(data: data, encoding: .utf8)
             DispatchQueue.main.async {
                     let userRouter = HomeRouter.start()
                     let initialVC = userRouter.entry
@@ -72,8 +72,7 @@ class LogInteractor: AnyInteractor {
                     window.rootViewController = initialVC
                     self.window = window
                     window.makeKeyAndVisible()
-                
-                
+            
                 self.presenter?.view?.newView(onViewC: HomeViewController())
             }
         }
@@ -81,6 +80,8 @@ class LogInteractor: AnyInteractor {
         task.resume()
         }
 }
+
+
 extension Dictionary {
     func percentEncoded() -> Data? {
         return map { key, value in

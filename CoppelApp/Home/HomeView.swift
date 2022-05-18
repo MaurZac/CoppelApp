@@ -10,19 +10,19 @@ import UIKit
 
 
 protocol HomeAnyView {
-    var presenter: HomeAnyPresenter? {get set}
+    var presenter: HomeAnyPresenter? { get set }
     func update(with resul: [Welcome])
     func update(with error: String)
 }
 
 
 class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
- 
+    
     var presenter: HomeAnyPresenter?
     var window: UIWindow?
     
+    var infoRes: [Welcome]?
     
-    var infoRes: [Welcome] = []
     let segmentMenu: UISegmentedControl = {
         let segmenu = UISegmentedControl(items: ["Popular", "Top Rated", "On Tv", "Airing Today"])
         segmenu.backgroundColor = .darkGray
@@ -62,11 +62,13 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         view.backgroundColor = .systemGray5
         title = "TV Shows"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        getMovies()
         setupViewContraints()
         btnNavBar()
-        collectionview.delegate = self
-        collectionview.dataSource = self
-        getMovies()
+        DispatchQueue.main.async { [self] in
+            collectionview.delegate = self
+            collectionview.dataSource = self
+        }
     }
    
     
@@ -130,17 +132,17 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return infoRes[0].results.count
+        return infoRes?[0].results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath as IndexPath) as! MovieCollectionViewCell
-        cell.myLbl.text = infoRes[0].results[indexPath.row].originalTitle
-        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)")
+        cell.myLbl.text = infoRes?[0].results[indexPath.row].originalTitle
+        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(String(describing: infoRes?[0].results[indexPath.row].posterPath))")
         cell.myImg.clipsToBounds = true
         cell.myImg.layer.cornerRadius = 30
-        cell.myLblDes.text = infoRes[0].results[indexPath.row].overview
-        let stringB = formattedDateFromString( dateString: infoRes[0].results[indexPath.row].releaseDate, withFormat: "MMM dd, yyyy")
+        cell.myLblDes.text = infoRes?[0].results[indexPath.row].overview
+        let stringB = formattedDateFromString( dateString: infoRes?[0].results[indexPath.row].releaseDate ?? "date", withFormat: "MMM dd, yyyy")
         cell.myLblDate.text = stringB
         return cell
     }
@@ -153,22 +155,20 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         
         DispatchQueue.main.async { [self] in
             let destinationVC = ModalViewController()
-            destinationVC.texto1 = infoRes[0].results[indexPath.row].originalTitle
-            destinationVC.texto2 = infoRes[0].results[indexPath.row].overview
-            destinationVC.texto3 = infoRes[0].results[indexPath.row].voteAverage
-            destinationVC.imgPath1 = "https://image.tmdb.org/t/p/w500/\(infoRes[0].results[indexPath.row].posterPath)"
-            let stringB = formattedDateFromString( dateString: infoRes[0].results[indexPath.row].releaseDate, withFormat: "MMM dd, yyyy")
+            destinationVC.texto1 = infoRes?[0].results[indexPath.row].originalTitle ?? ""
+            destinationVC.texto2 = infoRes?[0].results[indexPath.row].overview ?? ""
+            destinationVC.texto3 = infoRes?[0].results[indexPath.row].voteAverage ?? 0.0
+            destinationVC.imgPath1 = "https://image.tmdb.org/t/p/w500/\(String(describing: infoRes?[0].results[indexPath.row].posterPath))"
+            let stringB = formattedDateFromString( dateString: infoRes?[0].results[indexPath.row].releaseDate ?? "date", withFormat: "MMM dd, yyyy")
             destinationVC.texto4 = stringB ?? ""
             present(destinationVC, animated: true, completion: nil)
-            
                 let userRouter = ModalRouter.start()
                 let initialVC = userRouter.entry
-                initialVC?.presenter?.view?.update(with: infoRes[0].results[indexPath.row].originalTitle)
+            initialVC?.presenter?.view?.update(with: infoRes?[0].results[indexPath.row].originalTitle ?? "")
                 let window = UIWindow()
                 window.rootViewController = initialVC
                 self.window = window
                 window.makeKeyAndVisible()
-            
         }
     }
     
@@ -179,7 +179,6 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
             navController.navigationBar.backgroundColor = .clear
             self.present(navController, animated: true, completion: nil)
         }
-
     }
 }
 
@@ -190,24 +189,36 @@ extension HomeViewController{
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
         //button.addTarget(self, action:#selector(menuItem), for: .touchDown)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.menu = menuItem()
+        button.addTarget(self, action: #selector(menuItem), for: .touchDown)
         button.showsMenuAsPrimaryAction = true
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItems = [barButton]
     }
     
-    func menuItem() -> UIMenu {
-        let addMenuItems = UIMenu(title: "What do you want to do?", options:  .displayInline, children:  [
-            UIAction(title: "View Profile" , image: UIImage(systemName: "")) {_ in
-                print("Copy")
-            },
-            UIAction(title: "Log out", image: UIImage(systemName: "")) {_ in
-                print("Copy")
-            }
-        ])
-        return addMenuItems
+    @objc func menuItem() {
+        let alert = UIAlertController(title: "", message: "what do you want to do?", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in
+                    self.newView(onViewC: ProfileViewController())
+                }))
+
+                alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { (_) in
+                    self.navigationController?.popToRootViewController(animated: true)
+                                   DispatchQueue.main.async {
+                                    let navController = UINavigationController(rootViewController: LogViewController())
+                                     navController.modalPresentationStyle = .fullScreen
+                                      navController.navigationBar.backgroundColor = .clear
+                                    self.present(navController, animated: true, completion: nil)
+                                  }
+                }))
+
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                    print("User click Dismiss button")
+                }))
+
+                self.present(alert, animated: true, completion: {
+                    print("completion block")
+                })
     }
-    
     
     func setupViewContraints() {
         view.addSubview(segmentMenu)
@@ -222,9 +233,10 @@ extension HomeViewController{
         collectionview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         collectionview.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         collectionview.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
-        
-
     }
+    
+    
+    
    
 }
 

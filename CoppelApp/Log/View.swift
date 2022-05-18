@@ -98,7 +98,6 @@ class LogViewController: UIViewController, AnyView{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //presenter?.viewDidLoad()
         presenter?.interactor?.getToken()
         setupViewContraints()
         lblError.isHidden = true

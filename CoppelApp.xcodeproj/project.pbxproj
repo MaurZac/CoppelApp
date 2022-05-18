@@ -30,6 +30,11 @@
 		C52F64332824D24300F11F55 /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64322824D24300F11F55 /* ModalPresenter.swift */; };
 		C52F64352824D25600F11F55 /* ModalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64342824D25600F11F55 /* ModalEntity.swift */; };
 		C52F64372824D27800F11F55 /* ModalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52F64362824D27800F11F55 /* ModalRouter.swift */; };
+		C5505B4D2834966400F7F155 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5505B4C2834966400F7F155 /* ProfileView.swift */; };
+		C5505B4F2834967000F7F155 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5505B4E2834967000F7F155 /* ProfileInteractor.swift */; };
+		C5505B512834968700F7F155 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5505B502834968700F7F155 /* ProfilePresenter.swift */; };
+		C5505B532834969C00F7F155 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5505B522834969C00F7F155 /* ProfileEntity.swift */; };
+		C5505B55283496AF00F7F155 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5505B54283496AF00F7F155 /* ProfileRouter.swift */; };
 		C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B7281CFFE300999E38 /* AppDelegate.swift */; };
 		C5C357BA281CFFE300999E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357B9281CFFE300999E38 /* SceneDelegate.swift */; };
 		C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C357BB281CFFE300999E38 /* ViewController.swift */; };
@@ -81,6 +86,11 @@
 		C52F64322824D24300F11F55 /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		C52F64342824D25600F11F55 /* ModalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalEntity.swift; sourceTree = "<group>"; };
 		C52F64362824D27800F11F55 /* ModalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalRouter.swift; sourceTree = "<group>"; };
+		C5505B4C2834966400F7F155 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C5505B4E2834967000F7F155 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		C5505B502834968700F7F155 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		C5505B522834969C00F7F155 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
+		C5505B54283496AF00F7F155 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		C5C357B4281CFFE300999E38 /* CoppelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoppelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C357B7281CFFE300999E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5C357B9281CFFE300999E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +175,18 @@
 			path = Modal;
 			sourceTree = "<group>";
 		};
+		C5505B4B283470D300F7F155 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C5505B4C2834966400F7F155 /* ProfileView.swift */,
+				C5505B4E2834967000F7F155 /* ProfileInteractor.swift */,
+				C5505B502834968700F7F155 /* ProfilePresenter.swift */,
+				C5505B522834969C00F7F155 /* ProfileEntity.swift */,
+				C5505B54283496AF00F7F155 /* ProfileRouter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		C5C357AB281CFFE300999E38 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +210,7 @@
 		C5C357B6281CFFE300999E38 /* CoppelApp */ = {
 			isa = PBXGroup;
 			children = (
+				C5505B4B283470D300F7F155 /* Profile */,
 				C52F642D2824D1B200F11F55 /* Modal */,
 				C52F64092820AF5100F11F55 /* Log */,
 				C52F641F28217AEB00F11F55 /* Home */,
@@ -364,10 +387,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52F642F2824D22500F11F55 /* ModalView.swift in Sources */,
+				C5505B4D2834966400F7F155 /* ProfileView.swift in Sources */,
 				C52F642528217B1300F11F55 /* HomePresenter.swift in Sources */,
+				C5505B55283496AF00F7F155 /* ProfileRouter.swift in Sources */,
 				C52F642128217AFF00F11F55 /* HomeView.swift in Sources */,
 				C52F63C0281E475000F11F55 /* LoginPresenter.swift in Sources */,
 				C5C357BC281CFFE300999E38 /* ViewController.swift in Sources */,
+				C5505B4F2834967000F7F155 /* ProfileInteractor.swift in Sources */,
 				C52F64112820AFA200F11F55 /* Entity.swift in Sources */,
 				C52F63C3281E475000F11F55 /* LoginInteractor.swift in Sources */,
 				C5C357B8281CFFE300999E38 /* AppDelegate.swift in Sources */,
@@ -381,7 +407,9 @@
 				C52F642928217B2500F11F55 /* HomeRouter.swift in Sources */,
 				C52F63C4281E475000F11F55 /* LoginView.swift in Sources */,
 				C52F642328217B0A00F11F55 /* HomeInteractor.swift in Sources */,
+				C5505B532834969C00F7F155 /* ProfileEntity.swift in Sources */,
 				C52F63C1281E475000F11F55 /* LoginLocalDataManager.swift in Sources */,
+				C5505B512834968700F7F155 /* ProfilePresenter.swift in Sources */,
 				C52F640F2820AF9600F11F55 /* Presenter.swift in Sources */,
 				C52F64312824D23500F11F55 /* ModalInteractor.swift in Sources */,
 				C52F642728217B1C00F11F55 /* HomeEntity.swift in Sources */,
