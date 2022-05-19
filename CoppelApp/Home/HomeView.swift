@@ -65,13 +65,14 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
         getMovies()
         setupViewContraints()
         btnNavBar()
-        DispatchQueue.main.async { [self] in
+     
+            
             collectionview.delegate = self
             collectionview.dataSource = self
-        }
+            
+        
     }
    
-    
     @objc func indexChanged(_ sender: UISegmentedControl) {
         switch segmentMenu.selectedSegmentIndex {
         case 0:
@@ -90,7 +91,7 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     func getMovies() {
         print("entraGetMovies")
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=34c5d1ffcfea821c6c7269f28caafa11&language=en-US&page=1") else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { [self] data, response, error in
             if let data = data {
                 if let res = try? JSONDecoder().decode(Welcome.self, from: data) {
                     self.infoRes = [res]
@@ -138,7 +139,8 @@ class HomeViewController: UIViewController, HomeAnyView, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath as IndexPath) as! MovieCollectionViewCell
         cell.myLbl.text = infoRes?[0].results[indexPath.row].originalTitle
-        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(String(describing: infoRes?[0].results[indexPath.row].posterPath))")
+        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500\(infoRes?[0].results[indexPath.row].posterPath)")
+        print(infoRes?[0].results[indexPath.row].posterPath)
         cell.myImg.clipsToBounds = true
         cell.myImg.layer.cornerRadius = 30
         cell.myLblDes.text = infoRes?[0].results[indexPath.row].overview
@@ -187,7 +189,6 @@ extension HomeViewController{
     func btnNavBar(){
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        //button.addTarget(self, action:#selector(menuItem), for: .touchDown)
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.addTarget(self, action: #selector(menuItem), for: .touchDown)
         button.showsMenuAsPrimaryAction = true
@@ -198,7 +199,19 @@ extension HomeViewController{
     @objc func menuItem() {
         let alert = UIAlertController(title: "", message: "what do you want to do?", preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in
-                    self.newView(onViewC: ProfileViewController())
+                    DispatchQueue.main.async {
+                        self.present(ProfileViewController(), animated: true, completion: nil)
+
+                            let userRouter = ProfileRouter.start()
+                            let initialVC = userRouter.entry
+                            let window = UIWindow()
+                            window.rootViewController = initialVC
+                            self.window = window
+                            window.makeKeyAndVisible()
+                    
+                       
+                    }
+                    
                 }))
 
                 alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { (_) in

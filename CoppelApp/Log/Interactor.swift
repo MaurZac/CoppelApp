@@ -28,7 +28,8 @@ class LogInteractor: AnyInteractor {
 
                 if let token = try? JSONDecoder().decode(LogEntity.self, from: data) {
                     self.tokenOb = token.request_token
-                    print(token)
+                    //print(token)
+                    
                 } else {
                     print("Invalid Response")
                 }
@@ -57,14 +58,12 @@ class LogInteractor: AnyInteractor {
                 print("error", error ?? "Unknown error")
                 return
             }
-
             guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
                 print("statusCode should be 2xx, but is \(response.statusCode)")
                 print("response = \(response)")
                 self.presenter?.view?.update(with: "\(response.statusCode) incorrect Data")
                 return
             }
-
             DispatchQueue.main.async {
                     let userRouter = HomeRouter.start()
                     let initialVC = userRouter.entry
@@ -76,12 +75,10 @@ class LogInteractor: AnyInteractor {
                 self.presenter?.view?.newView(onViewC: HomeViewController())
             }
         }
-
         task.resume()
         }
+    
 }
-
-
 extension Dictionary {
     func percentEncoded() -> Data? {
         return map { key, value in

@@ -10,7 +10,7 @@ import UIKit
 
 protocol AnyProfileView {
     var presenter: AnyProfilePresenter? { get set }
-    func moviesList(with movies: [ProfileEntity])
+    func moviesList(with movies: [Welcome])
     func movieError(with error: String)
 }
 
@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController, AnyProfileView, UICollectionViewD
     
    
     var presenter: AnyProfilePresenter?
+    var moviesNow: [Welcome]?
+    let newfunc = HomeViewController.formattedDateFromString(HomeViewController())
     
     let lblTitle: UILabel = {
         let lblTitle = UILabel()
@@ -79,8 +81,29 @@ class ProfileViewController: UIViewController, AnyProfileView, UICollectionViewD
         super.viewDidLoad()
         view.backgroundColor = .black
         setupViewContraints()
+        DispatchQueue.main.async { [self] in
+            collectionview.reloadData()
+            collectionview.delegate = self
+            collectionview.dataSource = self
+        }
     }
     
+    func getProfile() {
+        print("profileonview")
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=34c5d1ffcfea821c6c7269f28caafa11&language=en-US&page=1") else { return }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data {
+                if let res = try? JSONDecoder().decode(Welcome.self, from: data) {
+                    self.moviesNow = [res]
+                } else {
+                    print("Invalid Response")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+        task.resume()
+    }
     func setupViewContraints(){
         view.addSubview(lblTitle)
         view.addSubview(profileImg)
@@ -112,20 +135,44 @@ class ProfileViewController: UIViewController, AnyProfileView, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return moviesNow?[0].results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionview.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath as IndexPath) as! MovieCollectionViewCell
+        cell.myLbl.text = moviesNow?[0].results[indexPath.row].originalTitle
+        cell.myImg.downloaded(from: "https://image.tmdb.org/t/p/w500/\(String(describing: moviesNow?[0].results[indexPath.row].posterPath))")
+        cell.myImg.clipsToBounds = true
+        cell.myImg.layer.cornerRadius = 30
+        cell.myLblDes.text = moviesNow?[0].results[indexPath.row].overview
+        let stringB =  formattedDateFromString( dateString: moviesNow?[0].results[indexPath.row].releaseDate ?? "date", withFormat: "MMM dd, yyyy")
+        cell.myLblDate.text = stringB
+        
         return cell
+    }
+    
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = inputFormatter.date(from: dateString) {
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = format
+        return outputFormatter.string(from: date)
+        }
+        return nil
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         5
     }
     
-    func moviesList(with movies: [ProfileEntity]) {
-        print("success")
+    func moviesList(with movies: [Welcome]) {
+        DispatchQueue.main.async { [self] in
+            moviesNow = movies
+            collectionview.reloadData()
+            print("datax: \(moviesNow?[0].results.count)")
+        }
+        
     }
     
     func movieError(with error: String) {

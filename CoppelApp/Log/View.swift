@@ -94,8 +94,6 @@ class LogViewController: UIViewController, AnyView{
         return lblError
     }()
 
-    // MARK: Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.interactor?.getToken()
@@ -104,7 +102,6 @@ class LogViewController: UIViewController, AnyView{
     }
     
     @objc private func goToLogin() {
-     
         if userTField.text == "" || passTField.text == "" {
             lblError.isHidden = false
             lblError.text = "Los campos no pueden ir vacios"
@@ -112,11 +109,8 @@ class LogViewController: UIViewController, AnyView{
             DispatchQueue.main.async {
                 self.presenter?.interactor?.loginUser(username: self.userTField.text ?? "", password: self.passTField.text ?? "")
             }
-           
         }
     }
-    
-   
     
     func setupViewContraints(){
         let stackV = mainStackView()
